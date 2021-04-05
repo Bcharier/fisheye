@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FishEye</title>
+    <link rel="stylesheet" href="Sass/Style.css" />
+    <link rel="stylesheet" href="icons/css/all.css" type="text/css" />
+  </head>
+  <body>
+    <header class="header-photographer">
+      <a href="./index.html">
+        <img class="logo" src="Images/Fisheye logo.png" alt="Fisheye Home page"
+      /></a>
+    </header>
+
+    <main>
+      <section class="photographer-banner">
+        <div class="photographer-info">
+          <h1 class="photographer-name"></h1>
+          <h2 class="photographer-city"></h2>
+          <p class="photographer-tagline"></p>
+          <div class="photographer-tags"></div>
+        </div>
+
+        <button type="button" class="button contact-button">
+          Contactez-moi
+        </button>
+
+        <img class="photographer-profile-pic" />
+      </section>
+
+      <section class="media-list"></section>
+
+      <section class="info-box">
+        <p class="photographer-likes"></p>
+        <p class="photographer-price"></p>
+      </section>
+    </main>
+
+    <section class="contact-modal-container">
+      <div class="contact-modal-content">
+        <div class="contact-modal-header">
+          <p class="contact-modal-title"></p>
+          <p class="contact-modal-close">x</p>
+        </div>
+        <form class="contact-modal-form" name="contact" method="get">
+          <div class="formData">
+            <label for="first-name" id="first-name">Prénom</label>
+            <input
+              type="text"
+              class="text-control"
+              name="first-name"
+              minlength="2"
+              required
+            />
+          </div>
+          <div class="formData">
+            <label for="last-name" id="last-name">Nom</label>
+            <input
+              type="text"
+              class="text-control"
+              name="last-name"
+              minlength="2"
+              required
+            />
+          </div>
+          <div class="formData">
+            <label for="email" id="email">Email</label>
+            <input type="email" class="text-control" name="email" />
+          </div>
+          <div class="formData">
+            <label for="message" id="contact-message">Votre message</label>
+            <textarea
+              name="contact-message"
+              class="text-area-control"
+              rows="15"
+              maxlength="500"
+            ></textarea>
+          </div>
+          <button class="button contact-modal-validate">Envoyer</button>
+        </form>
+        <div class="contact-modal-confirmation">
+          <p>Merci de votre message !</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="media-modal-container">
+      <div class="media-modal">
+        <div class="media-modal-content">
+          <a href class="media-modal-arrow" id="arrow-left">&lt;</a>
+          <div></div>
+          <div class="media-modal-content-title"></div>
+          <a href class="media-modal-arrow">&gt;</a>
+        </div>
+        <a href class="media-modal-close">&times;</a>
+      </div>
+    </section>
+
+    <script type="module" src="./JS/photographerPage.js"></script>
+  </body>
+</html>

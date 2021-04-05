@@ -1,0 +1,61 @@
+.media-modal-container {
+    display: none;
+    width: 100vw;
+    height: 100vw;
+    background-color: rgba(196, 196, 196, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+
+
+.media-modal {
+  display: none;
+  width: 85vw;
+  height: 85vh;
+  z-index: 5;
+  background-color: #fff;
+  position: fixed;
+  top: 7.5vh;
+  left: 7.5vw;
+
+  .media-modal-close {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      color: $colour-primary;
+      font-size: 5rem;
+  }
+
+  .media-modal-arrow {
+      color: $colour-primary;
+      font-size: 5rem;
+  }
+
+  #arrow-left {
+      order: -1;
+  }
+
+  .media-modal-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: wrap;
+
+    img, video {
+      width: 70vw;
+      height: 70vh;
+      object-fit: contain;
+    }
+
+    .media-modal-content-title {
+        order: 4;
+        display: flex;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: $colour-primary;
+        width: 100%;
+    }
+  }
+}

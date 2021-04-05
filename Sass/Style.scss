@@ -1,0 +1,130 @@
+@import "./utils/variables";
+@import "./base/font";
+@import "./components/button";
+
+body {
+  font-family: "DMSans";
+  font-weight: 400;
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+.disable-scroll {
+  overflow: hidden;
+}
+
+header {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+
+  .logo {
+    width: 15rem;
+  }
+
+  a {
+    margin: auto 0;
+    cursor: pointer;
+  }
+
+  nav {
+    margin: auto 0;
+    ul {
+      list-style-type: none;
+      display: flex;
+    }
+  }
+
+  h1 {
+    color: $colour-primary;
+  }
+}
+
+.tag {
+  color: $colour-primary;
+  background-color: #fff;
+  margin: 0 0.5rem;
+  border: solid 0.1rem lightgrey;
+  border-radius: 2rem;
+  padding: 0.1rem 0.5rem;
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#photographers {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+
+  .photographer-profile {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    width: 30%;
+    margin: 5rem 0;
+
+    .photographer {
+      a {
+        display: flex;
+        flex-flow: column wrap;
+        text-decoration: none;
+        color: $colour-secondary;
+        align-items: center;
+        img {
+          width: 20rem;
+          height: 20rem;
+          border-radius: 50%;
+          object-fit: cover;
+          object-position: center;
+        }
+
+        .photographer-name {
+          font-size: 36px;
+        }
+      }
+    }
+
+    .photographer-info {
+      width: 20rem;
+
+      .photographer-location {
+        font-size: 13px;
+      }
+
+      .photographer-description {
+        font-size: 10px;
+      }
+
+      .photographer-price {
+        font-size: 9px;
+        color: $colour-price;
+      }
+    }
+
+    .photographer-tag {
+      width: 20rem;
+
+      ul {
+        display: flex;
+        list-style-type: none;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+
+        li {
+          button {
+            background-color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
+@import "./layouts/photographer-page";
+@import "./components/contact-modal";
+@import "./components/media-modal";
