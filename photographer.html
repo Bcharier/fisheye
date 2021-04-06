@@ -40,12 +40,17 @@
     </main>
 
     <section class="contact-modal-container">
+      <p class="contact-modal-close">&times;</p>
       <div class="contact-modal-content">
         <div class="contact-modal-header">
           <p class="contact-modal-title"></p>
-          <p class="contact-modal-close">x</p>
         </div>
-        <form class="contact-modal-form" name="contact" method="get">
+        <form
+          class="contact-modal-form"
+          name="contact"
+          method="get"
+          onsubmit=""
+        >
           <div class="formData">
             <label for="first-name" id="first-name">Prénom</label>
             <input
@@ -68,7 +73,7 @@
           </div>
           <div class="formData">
             <label for="email" id="email">Email</label>
-            <input type="email" class="text-control" name="email" />
+            <input type="email" class="text-control" name="email" required />
           </div>
           <div class="formData">
             <label for="message" id="contact-message">Votre message</label>
@@ -77,13 +82,14 @@
               class="text-area-control"
               rows="15"
               maxlength="500"
+              required
             ></textarea>
           </div>
-          <button class="button contact-modal-validate">Envoyer</button>
+          <button class="button contact-modal-validate" type="submit">Envoyer</button>
         </form>
-        <div class="contact-modal-confirmation">
-          <p>Merci de votre message !</p>
-        </div>
+      </div>
+      <div class="contact-modal-confirmation">
+        <p>Merci pour votre message !</p>
       </div>
     </section>
 

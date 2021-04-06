@@ -14,18 +14,14 @@
     background-color: #db8876;
     padding: 1rem;
     z-index: 10;
+    width: 35vw;
 
     .contact-modal-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 3rem;
-
-      .contact-modal-close {
-        color: #fff;
-        cursor: pointer;
-        margin-left: 3rem;
-      }
+      font-size: 2.5rem;
+      max-width: 75%;
     }
 
     .contact-modal-form > * + * {
@@ -42,13 +38,28 @@
         height: 1.7rem;
       }
     }
-    .contact-modal-confirmation {
-      color: black;
-      font-size: 2.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      display: none;
-    }
+  }
+  .contact-modal-confirmation {
+    color: black;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    background-color: #db8876;
+    padding: 1rem;
+    z-index: 10;
+    width: 35vw;
+    height: 70vh;
+  }
+
+  .contact-modal-close {
+    color: #fff;
+    cursor: pointer;
+    position: absolute;
+    top: 15vh;
+    right: 35vw;
+    font-size: 5rem;
+    z-index: 50;
   }
 }

@@ -6,13 +6,15 @@ body {
   font-family: "DMSans";
   font-weight: 400;
   margin: 0 auto;
+  font-size: 1vw;
 }
 
 a {
   text-decoration: none;
+  color: black;
 }
 
-.disable-scroll {
+.no-scroll {
   overflow: hidden;
 }
 
@@ -55,57 +57,64 @@ header {
   text-decoration: none;
 }
 
-#photographers {
-  display: flex;
-  flex-flow: row wrap;
-  width: 100%;
+.tag-selected {
+  color: #fff;
+  background-color: $colour-primary;
+}
+
+#main-home {
+
+  display: grid;
+  grid-template-columns: repeat(3, 33%);
 
   .photographer-profile {
     display: flex;
     flex-flow: column wrap;
     align-items: center;
-    width: 30%;
-    margin: 5rem 0;
+    margin: 3rem auto;
 
-    .photographer {
-      a {
-        display: flex;
-        flex-flow: column wrap;
-        text-decoration: none;
+    .photographer-link {
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+
+      .photographer-portrait {
+        width: 20rem;
+        height: 20rem;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      .photographer-name {
+        font-size: 2rem;
         color: $colour-secondary;
-        align-items: center;
-        img {
-          width: 20rem;
-          height: 20rem;
-          border-radius: 50%;
-          object-fit: cover;
-          object-position: center;
-        }
-
-        .photographer-name {
-          font-size: 36px;
-        }
       }
     }
 
-    .photographer-info {
-      width: 20rem;
-
-      .photographer-location {
-        font-size: 13px;
-      }
-
-      .photographer-description {
-        font-size: 10px;
-      }
-
-      .photographer-price {
-        font-size: 9px;
-        color: $colour-price;
-      }
+    .photographer-location {
+      font-size: 0.9rem;
     }
 
-    .photographer-tag {
+    .photographer-tagline {
+      font-size: 0.8rem;
+    }
+
+    .photographer-price {
+      font-size: 0.8rem;
+      color: $colour-price;
+    }
+  }
+}
+
+.photographer-profile > div {
+  margin: 0.1rem auto;
+}
+
+
+
+/*     .photographer-tag {
       width: 20rem;
 
       ul {
@@ -123,7 +132,7 @@ header {
       }
     }
   }
-}
+} */
 
 @import "./layouts/photographer-page";
 @import "./components/contact-modal";
