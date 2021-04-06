@@ -1,0 +1,47 @@
+@media only screen and (max-width: 700px) {
+
+    header {
+        display: flex;
+        flex-flow: wrap;
+        margin: auto 1%;
+
+        > a {
+            margin: 0;
+            width: 40vw;
+        }
+
+        .logo {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            padding-top: 1vh;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 1rem;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-flow: wrap;
+            order: 3;
+        }
+        .tag {
+            margin: 1rem 0.2rem;
+        }
+    }
+
+    #main-home {
+        display: flex;
+        flex-flow: column wrap;
+
+        .photographer-profile {
+            margin: 1.5rem auto;
+        }
+
+        .photographer-tags {
+            margin-top: 0.5rem;
+        }
+    }
+}

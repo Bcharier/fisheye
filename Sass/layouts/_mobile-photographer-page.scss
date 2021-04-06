@@ -1,0 +1,53 @@
+@media only screen and (max-width: 700px) {
+  .photographer-banner {
+    display: flex;
+    flex-flow: wrap;
+    padding: 3vw;
+    margin: auto 2vw;
+    background-color: #fff;
+
+    .photographer-info {
+        max-width: 65%;
+        .photographer-name {
+            font-size: 2rem;
+        }
+      .photographer-location {
+          font-size: 1rem;
+        padding: 0;
+      }
+      .photographer-tagline {
+          font-size: 0.8rem;
+      }
+      .photographer-tags {
+          .tag {
+              margin: auto 0.2rem;
+          }
+      }
+    }
+    img {
+        width: 5rem;
+        height: 5rem;
+        margin: 0;
+        position: relative;
+        top: 1rem;
+    }
+  }
+
+  .media-list {
+    margin: auto 2vw;
+    display: flex;
+    flex-flow: column wrap;
+
+    .media-container {
+      img,
+      video {
+        height: 60vw;
+        object-position: center;
+      }
+    }
+  }
+
+  .info-box {
+    display: none;
+  }
+}

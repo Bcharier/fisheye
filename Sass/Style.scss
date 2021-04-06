@@ -24,10 +24,10 @@ header {
   text-align: center;
 
   .logo {
-    width: 15rem;
+    width: 8vw;
   }
 
-  a {
+   a {
     margin: auto 0;
     cursor: pointer;
   }
@@ -53,6 +53,7 @@ header {
   border-radius: 2rem;
   padding: 0.1rem 0.5rem;
   font-size: 12px;
+  font-weight: 500;
   cursor: pointer;
   text-decoration: none;
 }
@@ -137,3 +138,5 @@ header {
 @import "./layouts/photographer-page";
 @import "./components/contact-modal";
 @import "./components/media-modal";
+@import "./layouts/mobile-homepage";
+@import "./layouts/mobile-photographer-page";

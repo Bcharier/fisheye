@@ -13,7 +13,7 @@ Déclarations de constantes pour l"affichage de la bannière
 */
 
 const photographerName = document.querySelector(".photographer-name");
-const photographerCity = document.querySelector(".photographer-city");
+const photographerLocation = document.querySelector(".photographer-location");
 const photographerTagline = document.querySelector(".photographer-tagline");
 const photographerTags = document.querySelector(".photographer-tags");
 const photographerPic = document.querySelector(".photographer-profile-pic");
@@ -29,6 +29,10 @@ const contactModalContent = document.querySelector(".contact-modal-content");
 const contactForm = document.querySelector(".contact-modal-form");
 const modalClose = document.querySelector(".contact-modal-close");
 const modalTitle = document.querySelector(".contact-modal-title");
+const inputFirstName = document.querySelector("#input-first-name");
+const inputLastName = document.querySelector("#input-last-name");
+const inputEmail = document.querySelector("#input-email");
+const inputMessage = document.querySelector("#input-message");
 
 /* 
 Récupération des données Json et création de la page
@@ -84,7 +88,7 @@ function displayPage() {
 function displayBanner() {
 
     photographerName.textContent = currentPhotographer.name;
-    photographerCity.textContent = currentPhotographer.city;
+    photographerLocation.textContent = currentPhotographer.city + ", " + currentPhotographer.country;
     photographerTagline.textContent = currentPhotographer.tagline;
     photographerPic.src = "./Images/Sample-Photos/Photographers_ID_Photos/" + currentPhotographer.portrait;
 
@@ -126,6 +130,7 @@ const body = document.querySelector("body");
 function openContactModal() {
 
     modalContainer.style.display = "flex";
+    modalTitle.innerHTML = "";
     modalTitle.innerHTML += "Contactez-moi" + "</br>" + currentPhotographer.name;
     body.classList.add("no-scroll");
 
@@ -133,19 +138,32 @@ function openContactModal() {
     // modalContainer.addEventListener("click", closeContactModal);
     contactForm.addEventListener("submit", submitContactModal);
 
+    if (window.innerWidth < 900) {
+        contactButton.style.display = "none";
+      }
 }
 
 function closeContactModal(e) {
     modalContainer.style.display = "none";
-    modalTitle.innerHTML = "";
     body.classList.remove("no-scroll");
 
+    if (window.innerWidth < 900) {
+        contactButton.style.display = "flex";
+      }
 }
 
 function submitContactModal(e) {
     e.preventDefault();
     contactModalContent.style.display = "none";
     confirmationMessage.style.display = "flex";
+    console.log(inputFirstName.value);
+    console.log(inputLastName.value);
+    console.log(inputEmail.value);
+    console.log(inputMessage.value);
+
+    if (window.innerWidth < 900) {
+        contactButton.style.display = "flex";
+      }
 }
 
 /* 
@@ -275,6 +293,10 @@ function openMediaModal(media, displayedMediaList) {
     mediaModal.style.display = "flex";
     document.body.classList.add("no-scroll");
 
+    if (window.innerWidth < 900) {
+        contactButton.style.display = "none";
+      }
+
     function nextMedia(e) {
         e.preventDefault();
         if ((displayedMediaList.indexOf(currentMedia) + 1) >= displayedMediaList.length) {
@@ -309,6 +331,10 @@ function closeMediaModal(e, media) {
     mediaModalContainer.style.display = "none";
     mediaModal.style.display = "none";
     document.body.classList.remove("no-scroll");
+
+    if (window.innerWidth < 900) {
+        contactButton.style.display = "flex";
+      }
 }
 
 

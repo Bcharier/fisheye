@@ -1,4 +1,7 @@
 .button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 4rem;
   width: 10rem;
   border: none;
@@ -9,4 +12,19 @@
   font-weight: 700;
   border-radius: 5%;
   cursor: pointer;
+  margin: 4vh auto 0 5vw;
+}
+
+@media only screen and (max-width: 700px) {
+
+  .button {
+    position: fixed;
+    z-index: 5;
+    bottom: 3vh;
+    left: 50vw;
+    margin: 0;
+    height: 2.5rem;
+    font-size: 1rem;
+    transform: translateX(-45%);
+  }
 }

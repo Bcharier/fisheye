@@ -23,9 +23,19 @@
   padding: 2%;
 
   .photographer-info {
-    h1 {
+    .photographer-name {
       color: $colour-secondary;
       font-size: 3rem;
+    }
+
+    .photographer-location {
+      color: $colour-primary;
+      font-size: 1.5rem;
+    }
+
+    .photographer-tagline {
+      color: $colour-photographer-tagline;
+      font-size: 1.2rem;
     }
   }
 
@@ -38,9 +48,6 @@
     margin-left: 15vw;
   }
 
-  .contact-button {
-    margin: 4vh auto 0 5vw;
-  }
 }
 
 .media-list {

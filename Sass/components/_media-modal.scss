@@ -50,12 +50,49 @@
     }
 
     .media-modal-content-title {
-        order: 4;
+        order: 1;
         display: flex;
         justify-content: center;
+        text-align: center;
         font-size: 1.5rem;
         color: $colour-primary;
         width: 100%;
+    }
+  }
+}
+
+
+@media only screen and (max-width: 700px) {
+
+  .media-modal {
+    width: 100vw;
+    height: 100vh;
+    z-index: 20;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    .media-modal-close {
+      position: absolute;
+      top: 18vh;
+      right: 3vw;
+      font-size: 3rem;
+    }
+
+    .media-modal-arrow {
+      font-size: 3rem;
+    }
+
+    .media-modal-content {
+      img, video {
+        height: 50vh;
+      }
+
+      .media-modal-content-title {
+        font-size: 1.3rem;
+        position: relative;
+        bottom: 20vh;
+      }
     }
   }
 }

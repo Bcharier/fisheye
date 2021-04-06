@@ -116,6 +116,7 @@ function displayPhotographers() {
     photographerLocation.classList.add("photographer-location");
     photographerTagline.classList.add("photographer-tagline");
     photographerPrice.classList.add("photographer-price");
+    photographerTags.classList.add("photographer-tags");
 
     photographer.tags.forEach((tag) => {
       const tagLink = document.createElement("a");

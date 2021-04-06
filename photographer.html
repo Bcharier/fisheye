@@ -19,7 +19,7 @@
       <section class="photographer-banner">
         <div class="photographer-info">
           <h1 class="photographer-name"></h1>
-          <h2 class="photographer-city"></h2>
+          <h2 class="photographer-location"></h2>
           <p class="photographer-tagline"></p>
           <div class="photographer-tags"></div>
         </div>
@@ -56,6 +56,7 @@
             <input
               type="text"
               class="text-control"
+              id="input-first-name"
               name="first-name"
               minlength="2"
               required
@@ -66,6 +67,7 @@
             <input
               type="text"
               class="text-control"
+              id="input-last-name"
               name="last-name"
               minlength="2"
               required
@@ -73,13 +75,14 @@
           </div>
           <div class="formData">
             <label for="email" id="email">Email</label>
-            <input type="email" class="text-control" name="email" required />
+            <input type="email" class="text-control" id="input-email" name="email" required />
           </div>
           <div class="formData">
             <label for="message" id="contact-message">Votre message</label>
             <textarea
               name="contact-message"
               class="text-area-control"
+              id="input-message"
               rows="15"
               maxlength="500"
               required
