@@ -1,0 +1,25 @@
+  @keyframes translate-y {
+    100% {
+        transform: translateY(-1rem);
+    }
+  }
+
+
+  @keyframes translate-y-5 {
+    100% {
+        transform: translateY(-5rem);
+    }
+  }
+
+  @keyframes translate-y-100 {
+
+    100% {
+        transform: translateY(100vh);
+    }
+  }
+
+  @keyframes translate-x-100 {
+      100% {
+          transform: translateX(100vw);
+      }
+  }

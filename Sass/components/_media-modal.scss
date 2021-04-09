@@ -5,7 +5,8 @@
     background-color: rgba(196, 196, 196, 0.6);
     position: fixed;
     top: 0;
-    left: 0;
+    left: -100vw;
+    animation: translate-x-100 500ms forwards ease-in-out;
 }
 
 
@@ -19,6 +20,7 @@
   position: fixed;
   top: 7.5vh;
   left: 7.5vw;
+
 
   .media-modal-close {
       position: absolute;

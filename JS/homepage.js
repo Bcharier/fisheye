@@ -56,12 +56,13 @@ function displayTags () {
     tagLink.classList.add("tag");
     tagLink.href = "#";
     tagLink.textContent = "#" + tag;
+    tagLink.setAttribute("aria-labelledby", `${tag}`);
 
     tagList.append(tagLink);
 
     
     tagLink.addEventListener("click", (e) => {
-      e.preventDefault();
+      e.prEventDefault();
       tagLink.classList.toggle("tag-selected");
       displayPhotographers();
     })
@@ -99,7 +100,7 @@ function displayPhotographers() {
 
     photographerLink.href = photographerLinkToPage;
     photographerPortrait.src = photographerLinkToPhoto;
-    photographerPortrait.alt = "Portrait de 'photographer.name'";
+    photographerPortrait.alt = "Portrait de " + photographer.name;
     photographerName.textContent = photographer.name;
     photographerLocation.textContent = photographer.city + "," + " " + photographer.country;
     photographerTagline.textContent = photographer.tagline;
@@ -124,6 +125,7 @@ function displayPhotographers() {
       tagLink.textContent = "#" + tag;
       tagLink.href = "#";
       photographerTags.append(tagLink);
+      tagLink.setAttribute("aria-labelledby", `${tag}`);
 
       tagLink.href = photographerLinkToPage + "&tag=" + tag;
 

@@ -31,6 +31,10 @@
   margin: 4vh auto 0 5vw;
 }
 
+.button:hover {
+  background-color: #D3573C;
+}
+
 @media only screen and (max-width: 700px) {
   .button {
     position: fixed;
@@ -42,6 +46,62 @@
     font-size: 1rem;
     -webkit-transform: translateX(-45%);
             transform: translateX(-45%);
+  }
+}
+
+@-webkit-keyframes translate-y {
+  100% {
+    -webkit-transform: translateY(-1rem);
+            transform: translateY(-1rem);
+  }
+}
+
+@keyframes translate-y {
+  100% {
+    -webkit-transform: translateY(-1rem);
+            transform: translateY(-1rem);
+  }
+}
+
+@-webkit-keyframes translate-y-5 {
+  100% {
+    -webkit-transform: translateY(-5rem);
+            transform: translateY(-5rem);
+  }
+}
+
+@keyframes translate-y-5 {
+  100% {
+    -webkit-transform: translateY(-5rem);
+            transform: translateY(-5rem);
+  }
+}
+
+@-webkit-keyframes translate-y-100 {
+  100% {
+    -webkit-transform: translateY(100vh);
+            transform: translateY(100vh);
+  }
+}
+
+@keyframes translate-y-100 {
+  100% {
+    -webkit-transform: translateY(100vh);
+            transform: translateY(100vh);
+  }
+}
+
+@-webkit-keyframes translate-x-100 {
+  100% {
+    -webkit-transform: translateX(100vw);
+            transform: translateX(100vw);
+  }
+}
+
+@keyframes translate-x-100 {
+  100% {
+    -webkit-transform: translateX(100vw);
+            transform: translateX(100vw);
   }
 }
 
@@ -107,6 +167,11 @@ header h1 {
   text-decoration: none;
 }
 
+.tag:hover {
+  background-color: #D3573C;
+  color: #fff;
+}
+
 .tag-selected {
   color: #fff;
   background-color: #901C1C;
@@ -157,6 +222,11 @@ header h1 {
      object-fit: cover;
   -o-object-position: center;
      object-position: center;
+}
+
+#main-home .photographer-profile .photographer-link .photographer-portrait:hover {
+  -webkit-animation: translate-y 300ms forwards;
+          animation: translate-y 300ms forwards;
 }
 
 #main-home .photographer-profile .photographer-link .photographer-name {
@@ -283,6 +353,11 @@ header h1 {
      object-position: center;
 }
 
+.media-list .media-container img:hover, .media-list .media-container video:hover {
+  -webkit-animation: translate-y 300ms forwards;
+          animation: translate-y 300ms forwards;
+}
+
 .media-list .media-container .media-text-container {
   display: -ms-grid;
   display: grid;
@@ -326,12 +401,14 @@ header h1 {
   display: flex;
   position: fixed;
   right: 0;
-  bottom: 0;
+  bottom: -5rem;
   padding: 0 2rem;
   margin-right: 2rem;
   background-color: #D3573C;
   border-radius: 5% 5% 0 0;
   font-size: 1.5rem;
+  -webkit-animation: translate-y-5 700ms forwards ease-in-out;
+          animation: translate-y-5 700ms forwards ease-in-out;
 }
 
 .info-box .photographer-likes {
@@ -341,7 +418,7 @@ header h1 {
 .contact-modal-container {
   position: fixed;
   left: 0;
-  top: 0;
+  top: -100vh;
   width: 100vw;
   height: 100vh;
   background-color: rgba(196, 196, 196, 0.6);
@@ -355,6 +432,8 @@ header h1 {
       -ms-flex-pack: center;
           justify-content: center;
   display: none;
+  -webkit-animation: translate-y-100 500ms forwards ease-in-out;
+          animation: translate-y-100 500ms forwards ease-in-out;
 }
 
 .contact-modal-container .contact-modal-content {
@@ -426,7 +505,7 @@ header h1 {
   color: #fff;
   cursor: pointer;
   position: absolute;
-  top: 15vh;
+  top: 5%;
   right: 35vw;
   font-size: 5rem;
   z-index: 50;
@@ -466,6 +545,14 @@ header h1 {
   }
 }
 
+@media only screen and (min-width: 1700px) {
+  .contact-modal-close {
+    position: absolute;
+    top: 35vh;
+    right: 35vh;
+  }
+}
+
 .media-modal-container {
   display: none;
   width: 100vw;
@@ -473,7 +560,9 @@ header h1 {
   background-color: rgba(196, 196, 196, 0.6);
   position: fixed;
   top: 0;
-  left: 0;
+  left: -100vw;
+  -webkit-animation: translate-x-100 500ms forwards ease-in-out;
+          animation: translate-x-100 500ms forwards ease-in-out;
 }
 
 .media-modal {

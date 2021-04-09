@@ -68,6 +68,10 @@
       object-position: center;
     }
 
+    img:hover, video:hover {
+      animation: translate-y 300ms forwards;
+    }
+
     .media-text-container {
       display: grid;
       grid-template-columns: minmax(50%, 1fr) fit-content(15%) fit-content(15%);
@@ -101,12 +105,13 @@
   display: flex;
   position: fixed;
   right: 0;
-  bottom: 0;
+  bottom: -5rem;
   padding: 0 2rem;
   margin-right: 2rem;
   background-color: $colour-secondary;
   border-radius: 5% 5% 0 0;
   font-size: 1.5rem;
+  animation: translate-y-5 700ms forwards ease-in-out;
 
   .photographer-likes {
     margin-right: 3rem;

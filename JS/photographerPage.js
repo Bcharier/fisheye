@@ -5,8 +5,6 @@ import { Media } from "./Media.js";
 const urlParameters = new URLSearchParams(window.location.search);
 const jsonData = "./Json/FishEyeDataFR.json";
 let currentPhotographer = Photographer;
-const mediaList = new MediaList();
-let displayedMediaList = [];
 
 /* 
 Déclarations de constantes pour l"affichage de la bannière
@@ -23,12 +21,12 @@ const contactButton = document.querySelector(".contact-button");
 Déclaration de constantes pour l"affichage du formulaire de contact
 */
 
-const modalContainer = document.querySelector(".contact-modal-container");
+const contactModalContainer = document.querySelector(".contact-modal-container");
 const confirmationMessage = document.querySelector(".contact-modal-confirmation");
 const contactModalContent = document.querySelector(".contact-modal-content");
 const contactForm = document.querySelector(".contact-modal-form");
-const modalClose = document.querySelector(".contact-modal-close");
-const modalTitle = document.querySelector(".contact-modal-title");
+const contactModalClose = document.querySelector(".contact-modal-close");
+const contactModalTitle = document.querySelector(".contact-modal-title");
 const inputFirstName = document.querySelector("#input-first-name");
 const inputLastName = document.querySelector("#input-last-name");
 const inputEmail = document.querySelector("#input-email");
@@ -91,6 +89,8 @@ function displayBanner() {
     photographerLocation.textContent = currentPhotographer.city + ", " + currentPhotographer.country;
     photographerTagline.textContent = currentPhotographer.tagline;
     photographerPic.src = "./Images/Sample-Photos/Photographers_ID_Photos/" + currentPhotographer.portrait;
+    photographerPic.alt = "Photo de profil de " + currentPhotographer.name;
+
 
     currentPhotographer.tags.forEach((tag) => {
         const tagLink = document.createElement("a");
@@ -98,6 +98,7 @@ function displayBanner() {
         tagLink.classList.add("tag");
         tagLink.href = "#";
         tagLink.textContent = "#" + tag;
+        tagLink.setAttribute("aria-labelledby", `${tag}`);
 
         tagLinkContainer.id = `${tag}`;
 
@@ -126,31 +127,42 @@ function displayBanner() {
 Ouverture, fermeture et envoi du formulaire de contact
 */
 const body = document.querySelector("body");
+const headerPhotographerPage = document.querySelector("header");
+const mainPhotographerPage = document.querySelector("main");
 
 function openContactModal() {
 
-    modalContainer.style.display = "flex";
-    modalTitle.innerHTML = "";
-    modalTitle.innerHTML += "Contactez-moi" + "</br>" + currentPhotographer.name;
+    contactModalContainer.style.display = "flex";
+    contactModalTitle.innerHTML = "";
+    contactModalTitle.innerHTML += "Contactez-moi" + "</br>" + currentPhotographer.name;
     body.classList.add("no-scroll");
 
-    modalClose.addEventListener("click", closeContactModal);
-    // modalContainer.addEventListener("click", closeContactModal);
+    headerPhotographerPage.setAttribute("aria-hidden", "true");
+    mainPhotographerPage.setAttribute("aria-hidden", "true");
+    contactModalContainer.setAttribute("aria-hidden", "false");
+
+    contactModalClose.addEventListener("click", closeContactModal);
+    // contactModalContainer.addEventListener("click", closeContactModal);
     contactForm.addEventListener("submit", submitContactModal);
 
     if (window.innerWidth < 900) {
         contactButton.style.display = "none";
-      }
+    }
 }
 
 function closeContactModal(e) {
-    modalContainer.style.display = "none";
+    contactModalContainer.style.display = "none";
     body.classList.remove("no-scroll");
+
+    headerPhotographerPage.setAttribute("aria-hidden", "false");
+    mainPhotographerPage.setAttribute("aria-hidden", "false");
+    contactModalContainer.setAttribute("aria-hidden", "true");
 
     if (window.innerWidth < 900) {
         contactButton.style.display = "flex";
-      }
+    }
 }
+
 
 function submitContactModal(e) {
     e.preventDefault();
@@ -163,12 +175,15 @@ function submitContactModal(e) {
 
     if (window.innerWidth < 900) {
         contactButton.style.display = "flex";
-      }
+    }
 }
 
 /* 
 Affichage des médias des photographes
 */
+
+const mediaList = new MediaList();
+let displayedMediaList = [];
 
 function displayMediaList() {
     const sectionMediaList = document.querySelector(".media-list");
@@ -205,6 +220,7 @@ function displayMediaList() {
         textContainer.classList.add("media-text-container");
         likeIcon.classList.add("far", "fa-heart");
 
+
         linkToMedia.href = "#"
         linkToMedia.addEventListener("click", (e) => e.preventDefault())
         linkToMedia.addEventListener("click", () => openMediaModal(media, displayedMediaList))
@@ -217,10 +233,10 @@ function displayMediaList() {
             }
         })
 
-
         mediaTitle.textContent = media.title;
         mediaPrice.textContent = media.price + "€";
         mediaLikes.innerHTML = media.likes + " " + likeIcon.outerHTML;
+        mediaLikes.setAttribute("aria-label", "Aimer la photo");
 
 
         mediaContainer.append(divMedia);
@@ -267,6 +283,7 @@ function displayInfoBox() {
 Affichage des éléments médias dans la modale
 */
 
+
 function openMediaModal(media, displayedMediaList) {
     const mediaModalContainer = document.querySelector(".media-modal-container");
     const mediaModal = document.querySelector(".media-modal");
@@ -276,6 +293,11 @@ function openMediaModal(media, displayedMediaList) {
     const arrows = mediaModal.querySelectorAll("a.media-modal-arrow");
     const leftArrow = arrows[0];
     const rightArrow = arrows[1];
+
+    headerPhotographerPage.setAttribute("aria-hidden", "true");
+    mainPhotographerPage.setAttribute("aria-hidden", "true");
+    mediaModalContainer.setAttribute("aria-hidden", "false");
+
 
     let currentMedia = media;
 
@@ -287,7 +309,7 @@ function openMediaModal(media, displayedMediaList) {
     rightArrow.addEventListener("click", e => nextMedia(e));
     leftArrow.addEventListener("click", e => previousMedia(e));
 
-    showContent();
+    displayContent();
 
     mediaModalContainer.style.display = "block";
     mediaModal.style.display = "flex";
@@ -295,7 +317,7 @@ function openMediaModal(media, displayedMediaList) {
 
     if (window.innerWidth < 900) {
         contactButton.style.display = "none";
-      }
+    }
 
     function nextMedia(e) {
         e.preventDefault();
@@ -304,7 +326,7 @@ function openMediaModal(media, displayedMediaList) {
         } else {
             currentMedia = displayedMediaList[displayedMediaList.indexOf(currentMedia) + 1]
         }
-        showContent();
+        displayContent();
     }
 
     function previousMedia(e) {
@@ -314,10 +336,10 @@ function openMediaModal(media, displayedMediaList) {
         } else {
             currentMedia = displayedMediaList[displayedMediaList.indexOf(currentMedia) - 1]
         }
-        showContent();
+        displayContent();
     }
 
-    function showContent() {
+    function displayContent() {
         mediaTitle.textContent = currentMedia.title
         mediaSection.firstChild.replaceWith(currentMedia.getDOMComponent(true))
     }
@@ -328,13 +350,19 @@ function closeMediaModal(e, media) {
     const mediaModalContainer = document.querySelector(".media-modal-container");
     const mediaModal = document.querySelector(".media-modal");
 
+    headerPhotographerPage.setAttribute("aria-hidden", "false");
+    mainPhotographerPage.setAttribute("aria-hidden", "false");
+    mediaModalContainer.setAttribute("aria-hidden", "true");
+
     mediaModalContainer.style.display = "none";
     mediaModal.style.display = "none";
     document.body.classList.remove("no-scroll");
 
+
+
     if (window.innerWidth < 900) {
         contactButton.style.display = "flex";
-      }
+    }
 }
 
 

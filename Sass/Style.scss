@@ -1,6 +1,7 @@
 @import "./utils/variables";
 @import "./base/font";
 @import "./components/button";
+@import "./components/animation";
 
 body {
   font-family: "DMSans";
@@ -58,6 +59,11 @@ header {
   text-decoration: none;
 }
 
+.tag:hover {
+  background-color: $colour-secondary;
+  color: #fff;
+}
+
 .tag-selected {
   color: #fff;
   background-color: $colour-primary;
@@ -86,6 +92,10 @@ header {
         border-radius: 50%;
         object-fit: cover;
         object-position: center;
+      }
+
+      .photographer-portrait:hover {
+        animation: translate-y 300ms forwards;
       }
 
       .photographer-name {

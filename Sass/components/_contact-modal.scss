@@ -1,7 +1,7 @@
 .contact-modal-container {
   position: fixed;
   left: 0;
-  top: 0;
+  top: -100vh;
   width: 100vw;
   height: 100vh;
   background-color: rgba(196, 196, 196, 0.6);
@@ -9,6 +9,7 @@
   align-items: center;
   justify-content: center;
   display: none;
+  animation: translate-y-100 500ms forwards ease-in-out;
 
   .contact-modal-content {
     background-color: #db8876;
@@ -61,7 +62,7 @@
     color: #fff;
     cursor: pointer;
     position: absolute;
-    top: 15vh;
+    top: 5%;
     right: 35vw;
     font-size: 5rem;
     z-index: 50;
@@ -105,3 +106,14 @@
     }
   }
 }
+
+@media only screen and (min-width: 1700px) {
+
+  .contact-modal-close {
+    position: absolute;
+    top: 35vh;
+    right: 35vh;
+  }
+  
+}
+
