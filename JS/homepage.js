@@ -62,7 +62,7 @@ function displayTags () {
 
     
     tagLink.addEventListener("click", (e) => {
-      e.prEventDefault();
+      e.preventDefault();
       tagLink.classList.toggle("tag-selected");
       displayPhotographers();
     })
