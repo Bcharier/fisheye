@@ -47,7 +47,6 @@
     object-position: center;
     margin-left: 15vw;
   }
-
 }
 
 .media-list {
@@ -68,7 +67,8 @@
       object-position: center;
     }
 
-    img:hover, video:hover {
+    img:hover,
+    video:hover {
       animation: translate-y 300ms forwards;
     }
 

@@ -1,31 +1,31 @@
 export class MediaList {
     constructor() {
-      this.mediaList = []
+      this.mediaList = [];
     }
   
     addMedia(media) {
-      this.mediaList.push(media)
+      this.mediaList.push(media);
     }
   
     getMediaList(sort, ...tags) {
-      const localMediaList = this.mediaList.slice()
-      let returnedList = []
+      const localMediaList = this.mediaList.slice();
+      let returnedList = [];
   
-      if (sort === 'popularite') {
-        localMediaList.sort((a, b) => b.likes - a.likes)
-      } else if (sort === 'date') {
-        localMediaList.sort((a, b) => b.date - a.date)
-      } else if (sort === 'titre') {
+      if (sort === "popularite") {
+        localMediaList.sort((a, b) => b.likes - a.likes);
+      } else if (sort === "date") {
+        localMediaList.sort((a, b) => b.date - a.date);
+      } else if (sort === "titre") {
         localMediaList.sort(function (a, b) {
-          const titleA = a.title.toUpperCase()
-          const titleB = b.title.toUpperCase()
+          const titleA = a.title.toUpperCase();
+          const titleB = b.title.toUpperCase();
           if (titleA < titleB) {
-            return -1
+            return -1;
           }
           if (titleA > titleB) {
-            return 1
+            return 1;
           }
-          return 0
+          return 0;
         })
       }
   
@@ -33,26 +33,22 @@ export class MediaList {
         localMediaList.forEach((media) => {
           media.tags.forEach((tag) => {
             if (tags.includes(tag) && !returnedList.includes(media)) {
-              returnedList.push(media)
+              returnedList.push(media);
             }
           })
         })
       } else {
-        returnedList = localMediaList.slice()
+        returnedList = localMediaList.slice();
       }
   
-      return returnedList
-    }
-  
-    getMediaById(id) {
-  
+      return returnedList;
     }
   
     getLikes() {
-      let sum = 0
+      let sum = 0;
       this.mediaList.forEach((media) => {
-        sum += media.likes
+        sum += media.likes;
       })
-      return sum
+      return sum;
     }
   }

@@ -1,15 +1,13 @@
 .media-modal-container {
-    display: none;
-    width: 100vw;
-    height: 100vw;
-    background-color: rgba(196, 196, 196, 0.6);
-    position: fixed;
-    top: 0;
-    left: -100vw;
-    animation: translate-x-100 500ms forwards ease-in-out;
+  display: none;
+  width: 100vw;
+  height: 100vw;
+  background-color: rgba(196, 196, 196, 0.6);
+  position: fixed;
+  top: 0;
+  left: -100vw;
+  animation: translate-x-100 500ms forwards ease-in-out;
 }
-
-
 
 .media-modal {
   display: none;
@@ -21,22 +19,27 @@
   top: 7.5vh;
   left: 7.5vw;
 
-
   .media-modal-close {
-      position: absolute;
-      top: 2rem;
-      right: 2rem;
-      color: $colour-primary;
-      font-size: 5rem;
+    position: absolute;
+    right: 3%;
+    top: -2%;
+    color: $colour-primary;
+    font-size: 5rem;
   }
 
   .media-modal-arrow {
-      color: $colour-primary;
-      font-size: 5rem;
+    color: $colour-primary;
+    font-size: 5rem;
+    position: absolute;
   }
 
-  #arrow-left {
-      order: -1;
+  .arrow-left {
+    left: 5%;
+    order: -1;
+  }
+
+  .arrow-right {
+    right: 5%;
   }
 
   .media-modal-content {
@@ -45,27 +48,26 @@
     align-items: center;
     flex-flow: wrap;
 
-    img, video {
+    img,
+    video {
       width: 70vw;
       height: 70vh;
       object-fit: contain;
     }
 
     .media-modal-content-title {
-        order: 1;
-        display: flex;
-        justify-content: center;
-        text-align: center;
-        font-size: 1.5rem;
-        color: $colour-primary;
-        width: 100%;
+      order: 1;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      font-size: 1.5rem;
+      color: $colour-primary;
+      width: 100%;
     }
   }
 }
 
-
 @media only screen and (max-width: 700px) {
-
   .media-modal {
     width: 100vw;
     height: 100vh;
@@ -86,7 +88,8 @@
     }
 
     .media-modal-content {
-      img, video {
+      img,
+      video {
         height: 50vh;
       }
 

@@ -124,29 +124,9 @@ header {
 }
 
 
-
-/*     .photographer-tag {
-      width: 20rem;
-
-      ul {
-        display: flex;
-        list-style-type: none;
-        align-items: center;
-        margin: 0;
-        padding: 0;
-
-        li {
-          button {
-            background-color: #fff;
-          }
-        }
-      }
-    }
-  }
-} */
-
 @import "./layouts/photographer-page";
 @import "./components/contact-modal";
 @import "./components/media-modal";
 @import "./layouts/mobile-homepage";
 @import "./layouts/mobile-photographer-page";
+@import "./components/dropdown-menu";
