@@ -63,7 +63,7 @@
     cursor: pointer;
     position: absolute;
     top: 5%;
-    right: 35vw;
+    right: 33%;
     font-size: 5rem;
     z-index: 50;
   }
@@ -107,13 +107,16 @@
   }
 }
 
-@media only screen and (min-width: 1700px) {
-
-  .contact-modal-close {
-    position: absolute;
-    top: 35vh;
-    right: 35vh;
+@media only screen and (min-width: 1450px) {
+  .contact-modal-container {
+    .contact-modal-close {
+      color: #fff;
+      cursor: pointer;
+      position: absolute;
+      top: 15%;
+      right: 33%;
+      font-size: 5rem;
+      z-index: 50;
+    }
   }
-  
 }
-

@@ -25,6 +25,7 @@ const contactModalContainer = document.querySelector(".contact-modal-container")
 const confirmationMessage = document.querySelector(".contact-modal-confirmation");
 const contactModalContent = document.querySelector(".contact-modal-content");
 const contactForm = document.querySelector(".contact-modal-form");
+const contactButtonValidate = document.querySelector(".contact-modal-validate");
 const contactModalClose = document.querySelector(".contact-modal-close");
 const contactModalTitle = document.querySelector(".contact-modal-title");
 const inputFirstName = document.querySelector("#input-first-name");
@@ -46,6 +47,14 @@ function createPage() {
         .then(displayPage)
 }
 
+function displayPage() {
+    document.title += " - " + currentPhotographer.name;
+
+    displayBanner();
+    displayMediaList();
+    displayInfoBox()
+    displayDropdownMenu();
+}
 
 
 function createPhotographer(data) {
@@ -71,15 +80,6 @@ function createPhotographer(data) {
             mediaList.addMedia(mediaFactory.createMedia(media.id, media.photographerId, media.image?.split(".").pop() || media.video?.split(".").pop(), media.image || media.video, media.tags, media.likes, media.date, media.price, media.alt, currentPhotographer.name.replace(" ", "") + "/"))
         }
     })
-}
-
-function displayPage() {
-    document.title += " - " + currentPhotographer.name;
-
-    displayBanner();
-    displayMediaList();
-    displayInfoBox()
-    displayDropdownMenu();
 }
 
 /* Affichage de la bannière du photographe */
@@ -143,8 +143,15 @@ function openContactModal() {
     contactModalContainer.setAttribute("aria-hidden", "false");
 
     contactModalClose.addEventListener("click", closeContactModal);
+    contactModalClose.addEventListener('keydown', e => {
+        if (e.code === 'Tab' && e.shiftKey) {
+            e.preventDefault();
+            contactButtonValidate.focus();
+        }
+    });
     // contactModalContainer.addEventListener("click", closeContactModal);
     contactForm.addEventListener("submit", submitContactModal);
+    contactForm.addEventListener('keydown', e => { if (e.code === 'Escape') { closeContactModal(e) } })
 
     if (window.innerWidth < 900) {
         contactButton.style.display = "none";
@@ -173,6 +180,8 @@ function submitContactModal(e) {
     console.log(inputLastName.value);
     console.log(inputEmail.value);
     console.log(inputMessage.value);
+
+    contactModalClose.focus();
 
     if (window.innerWidth < 900) {
         contactButton.style.display = "flex";
@@ -234,10 +243,22 @@ function displayMediaList() {
             }
         })
 
+        mediaLikes.addEventListener('keydown', (e) => {
+            if (e.code === 'Enter' || e.code === 'NumpadEnter') {
+                if (likeIcon.classList.contains('fas')) {
+                    removeLike();
+                } else {
+                    addLike();
+                }
+            }
+        });
+
         mediaTitle.textContent = media.title;
         mediaPrice.textContent = media.price + "€";
         mediaLikes.innerHTML = media.likes + " " + likeIcon.outerHTML;
         mediaLikes.setAttribute("aria-label", "Aimer la photo");
+        mediaLikes.setAttribute('role', 'button');
+        mediaLikes.setAttribute('tabindex', '0');
 
 
         mediaContainer.append(divMedia);
@@ -303,12 +324,30 @@ function openMediaModal(media, displayedMediaList) {
     let currentMedia = media;
 
     close.addEventListener("click", e => closeMediaModal(e, media));
+    close.addEventListener('keydown', e => {
+        if (e.code === 'Tab' && e.shiftKey) {
+          e.preventDefault();
+          rightArrow.focus();
+        }
+      })
+
+      mediaModal.addEventListener('keydown', e => {
+        if (e.code === 'Escape') { closeMediaModal(e, media) }
+        if (e.code === 'ArrowRight') { nextMedia(e) }
+        if (e.code === 'ArrowLeft') { previousMedia(e) }
+      });
+      mediaModal.firstElementChild.addEventListener('click', e => e.stopPropagation());
+      rightArrow.addEventListener('click', e => nextMedia(e));
+      leftArrow.addEventListener('click', e => previousMedia(e));
+      rightArrow.addEventListener('keydown', e => {
+        if (e.code === 'Tab' && !e.shiftKey) {
+          e.preventDefault();
+          close.focus();
+        }
+      })
+    
 
     // mediaModal.addEventListener("click", e => closeMediaModal(e, media));
-
-    mediaModal.firstElementChild.addEventListener("click", e => e.stopPropagation());
-    rightArrow.addEventListener("click", e => nextMedia(e));
-    leftArrow.addEventListener("click", e => previousMedia(e));
 
     displayContent();
 
@@ -323,9 +362,9 @@ function openMediaModal(media, displayedMediaList) {
     function nextMedia(e) {
         e.preventDefault();
         if ((displayedMediaList.indexOf(currentMedia) + 1) >= displayedMediaList.length) {
-            currentMedia = displayedMediaList[0]
+            currentMedia = displayedMediaList[0];
         } else {
-            currentMedia = displayedMediaList[displayedMediaList.indexOf(currentMedia) + 1]
+            currentMedia = displayedMediaList[displayedMediaList.indexOf(currentMedia) + 1];
         }
         displayContent();
     }
@@ -333,16 +372,16 @@ function openMediaModal(media, displayedMediaList) {
     function previousMedia(e) {
         e.preventDefault();
         if ((displayedMediaList.indexOf(currentMedia) - 1) < 0) {
-            currentMedia = displayedMediaList[displayedMediaList.length - 1]
+            currentMedia = displayedMediaList[displayedMediaList.length - 1];
         } else {
-            currentMedia = displayedMediaList[displayedMediaList.indexOf(currentMedia) - 1]
+            currentMedia = displayedMediaList[displayedMediaList.indexOf(currentMedia) - 1];
         }
         displayContent();
     }
 
     function displayContent() {
-        mediaTitle.textContent = currentMedia.title
-        mediaSection.firstChild.replaceWith(currentMedia.getDOMComponent(true))
+        mediaTitle.textContent = currentMedia.title;
+        mediaSection.firstChild.replaceWith(currentMedia.getDOMComponent(true));
     }
 }
 
@@ -364,62 +403,62 @@ function closeMediaModal(e, media) {
     if (window.innerWidth < 900) {
         contactButton.style.display = "flex";
     }
-}   
+}
 
 function displayDropdownMenu() {
-    const dropDownMenu = document.querySelector('.dropdownMenu-wrapper a')
-    const customSelect = document.querySelector('.custom-select')
-    const customSelectTrigger = document.querySelector('.custom-select__trigger')
-    const customOptions = document.querySelectorAll('.custom-option')
-    const firstCustomOption = document.querySelector('.custom-select a:first-child')
-    const lastCustomOption = document.querySelector('.custom-select a:last-child')
+    const dropDownMenu = document.querySelector('.dropdownMenu-wrapper a');
+    const customSelect = document.querySelector('.custom-select');
+    const customSelectTrigger = document.querySelector('.custom-select__trigger');
+    const customOptions = document.querySelectorAll('.custom-option');
+    const firstCustomOption = document.querySelector('.custom-select a:first-child');
+    const lastCustomOption = document.querySelector('.custom-select a:last-child');
 
     for (const option of customOptions) {
         option.addEventListener('click', function (e) {
-            e.preventDefault()
+            e.preventDefault();
             if (!this.classList.contains('selected')) {
-                const selected = this.parentNode.querySelector('.custom-option.selected')
-                selected.classList.remove('selected')
-                this.classList.add('selected')
-                this.setAttribute('aria-selected', 'true')
-                this.closest('.custom-select').querySelector('.custom-select__trigger span').textContent = this.textContent
-                collapseDropdown()
-                displayMediaList()
+                const selected = this.parentNode.querySelector('.custom-option.selected');
+                selected.classList.remove('selected');
+                this.classList.add('selected');
+                this.setAttribute('aria-selected', 'true');
+                this.closest('.custom-select').querySelector('.custom-select__trigger span').textContent = this.textContent;
+                collapseDropdown();
+                displayMediaList();
             }
         })
     }
     dropDownMenu.addEventListener('click', function (e) {
-        e.preventDefault()
+        e.preventDefault();
         if (customSelect.classList.contains('open')) { collapseDropdown() } else { expandDropdown() }
     })
 
     lastCustomOption.addEventListener('keydown', function (e) {
         if (e.code === 'Tab' && !e.shiftKey) {
-            collapseDropdown()
+            collapseDropdown();
         }
     })
 
     firstCustomOption.addEventListener('keydown', function (e) {
         if (e.code === 'Tab' && e.shiftKey) {
-            collapseDropdown()
+            collapseDropdown();
         }
     })
 
     window.addEventListener('click', function (e) {
         if (!customSelect.contains(e.target)) {
-            collapseDropdown()
+            collapseDropdown();
         }
     })
 
 
     function expandDropdown() {
-        customSelect.classList.add('open')
-        customSelectTrigger.setAttribute('aria-expanded', 'true')
+        customSelect.classList.add('open');
+        customSelectTrigger.setAttribute('aria-expanded', 'true');
     }
 
     function collapseDropdown() {
-        customSelect.classList.remove('open')
-        customSelectTrigger.setAttribute('aria-expanded', 'false')
+        customSelect.classList.remove('open');
+        customSelectTrigger.setAttribute('aria-expanded', 'false');
     }
 }
 

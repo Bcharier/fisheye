@@ -117,3 +117,9 @@
     transform: rotate(45deg);
   }
 }
+
+@media only screen and (max-width: 700px) {
+  .filter {
+    display: none;
+  }
+}

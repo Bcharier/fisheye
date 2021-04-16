@@ -1,8 +1,8 @@
 export class Media {
     createMedia (id, photographerId, type, link, tags, likes, date, price, alt, path) {
-      if (type === 'jpg') {
+      if (type === "jpg") {
         const photo = new Photo();
-        photo.title = link.replace('.jpg', '').replaceAll('_', ' ');
+        photo.title = link.replace(".jpg", "").replaceAll("_", " ");
         photo.id = id;
         photo.photographerId = photographerId;
         photo.link = path + link;
@@ -12,9 +12,9 @@ export class Media {
         photo.price = price;
         photo.alt = alt;
         return photo
-      } else if (type === 'mp4') {
+      } else if (type === "mp4") {
         const video = new Video();
-        video.title = link.replace('.mp4', '').replaceAll('_', ' ');
+        video.title = link.replace(".mp4", "").replaceAll("_", " ");
         video.id = id;
         video.photographerId = photographerId;
         video.link = path + link;
@@ -31,9 +31,9 @@ export class Media {
   export class Photo extends Media {
     getDOMComponent () {
       const relativePathToImg = "Images/Sample-Photos/";
-      const picture = document.createElement('picture');
-      const source = document.createElement('source');
-      const img = document.createElement('img');
+      const picture = document.createElement("picture");
+      const source = document.createElement("source");
+      const img = document.createElement("img");
   
       source.srcset = relativePathToImg + this.link;
   
@@ -50,8 +50,8 @@ export class Media {
   export class Video extends Media {
     getDOMComponent (controls = false) {
       const relativePathToImg = "Images/Sample-Photos/";
-      const video = document.createElement('video');
-      const videoSource = document.createElement('source');
+      const video = document.createElement("video");
+      const videoSource = document.createElement("source");
   
       video.controls = controls;
       video.muted = true;
@@ -59,7 +59,7 @@ export class Media {
   
       videoSource.src = relativePathToImg + this.link;
       videoSource.alt = this.alt;
-      videoSource.type = 'video/mp4';
+      videoSource.type = "video/mp4";
   
       video.append(videoSource);
   
