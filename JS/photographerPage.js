@@ -52,7 +52,7 @@ function displayPage() {
 
     displayBanner();
     displayMediaList();
-    displayInfoBox()
+    displayInfoBox();
     displayDropdownMenu();
 }
 
@@ -331,7 +331,7 @@ function openMediaModal(media, displayedMediaList) {
         }
       })
 
-      mediaModal.addEventListener('keydown', e => {
+      document.addEventListener('keydown', e => {
         if (e.code === 'Escape') { closeMediaModal(e, media) }
         if (e.code === 'ArrowRight') { nextMedia(e) }
         if (e.code === 'ArrowLeft') { previousMedia(e) }
