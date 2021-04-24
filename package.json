@@ -1,0 +1,22 @@
+{
+  "name": "fisheye",
+  "version": "1.0.0",
+  "description": "Plateforme de promotion de photographes",
+  "main": "homepage.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bcharier/fisheye.git"
+  },
+  "author": "Baptiste Charier",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bcharier/fisheye/issues"
+  },
+  "homepage": "https://github.com/Bcharier/fisheye#readme",
+  "devDependencies": {
+    "eslint": "^7.24.0"
+  }
+}

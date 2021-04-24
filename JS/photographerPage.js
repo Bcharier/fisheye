@@ -159,6 +159,7 @@ function openContactModal() {
 }
 
 function closeContactModal(e) {
+    e.preventDefault();
     contactModalContainer.style.display = "none";
     body.classList.remove("no-scroll");
 
@@ -385,7 +386,7 @@ function openMediaModal(media, displayedMediaList) {
     }
 }
 
-function closeMediaModal(e, media) {
+function closeMediaModal(e) {
     e.preventDefault();
     const mediaModalContainer = document.querySelector(".media-modal-container");
     const mediaModal = document.querySelector(".media-modal");
