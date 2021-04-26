@@ -143,13 +143,13 @@ function openContactModal() {
     contactModalContainer.setAttribute("aria-hidden", "false");
 
     contactModalClose.addEventListener("click", closeContactModal);
-    contactModalClose.addEventListener('keydown', e => {
+    document.addEventListener('keydown', e => {
         if (e.code === 'Tab' && e.shiftKey) {
             e.preventDefault();
             contactButtonValidate.focus();
         }
+        if (e.code === 'Escape') { closeContactModal(e) }
     });
-    // contactModalContainer.addEventListener("click", closeContactModal);
     contactForm.addEventListener("submit", submitContactModal);
     contactForm.addEventListener('keydown', e => { if (e.code === 'Escape') { closeContactModal(e) } })
 
